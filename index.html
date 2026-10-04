@@ -206,6 +206,8 @@
             border-radius: 32px;
             max-width: 500px;
             width: 90%;
+            max-height: 90vh; /* Så boksen kan scrolles på små mobilskærme */
+            overflow-y: auto;
             text-align: center;
             position: relative;
             box-shadow: 0 15px 35px rgba(133, 88, 0, 0.18);
@@ -309,18 +311,18 @@
             <div class="card" onclick="visDetaljer('Festplanlægning 🎉🍋', 'Skal du holde fødselsdag eller klassefest? Jeg elsker kreativt arbejde og hjælper dig med at planlægge den perfekte dag!\n\nJeg kan hjælpe med:\n• At designe super flotte invitationer digitalt\n• Lave en tjekliste over pynt og temaer\n• Planlægge sjove lege og aktiviteter.', 'Aftales nærmere')">
                 <h3>Festplanlægning 🎉🍋</h3>
                 <p>Planlægning af fødselsdagsfest med flotte invitationer og pynt.</p>
-                <p class="price">Aftales</p>
+                <p class="price">Aftales nærmere</p>
                 <p class="click-for-more">Klik for detaljer ✨💛</p>
             </div>
 
             <div class="card" onclick="visDetaljer('Hjemmeside-hjælp 💻🍋', 'Drømmer du om din helt egen blog, gaming-side eller noget helt tredje?\n\nJeg hjælper dig med at forstå, hvordan man bygger og designer din allerførste hjemmeside helt fra bunden. Vi kigger på opsætning og design, så den bliver lige så fin som denne her!', 'Aftales nærmere')">
                 <h3>Hjemmeside-hjælp 💻🍋</h3>
                 <p>Jeg hjælper dig med at bygge og designe din allerførste hjemmeside.</p>
-                <p class="price">Aftales</p>
+                <p class="price">Aftales nærmere</p>
                 <p class="click-for-more">Klik for detaljer ✨💛</p>
             </div>
 
-            <div class="card" onclick="visDetaljer('Matematiknoter 📝🍋', 'Få fingrene i mine personlige og super overskuelige matematiknoter det fra 1 til 8 kontext.\n\nNoterne er:\n• Skrevet så de er mega nemme at forstå\n• Fyldt med flotte farver og klare eksempler\n• Proppet med gode huskeregler, som gør afleveringer meget lettere!', '65 kr. pr. sæt')">
+            <div class="card" onclick="visDetaljer('Matematiknoter 📝🍋', 'Få fingrene i mine personlige og super overskuelige matematiknoter fra 1. til 8. klasse.\n\nNoterne er:\n• Skrevet så de er mega nemme at forstå\n• Fyldt med flotte farver og klare eksempler\n• Proppet med gode huskeregler, som gør afleveringer meget lettere!', '65 kr. pr. sæt')">
                 <h3>Matematiknoter 📝🍋</h3>
                 <p>Salg af overskuelige, velskrevne og hjælpsomme matematiknoter.</p>
                 <p class="price">65 kr. pr. sæt</p>
@@ -331,7 +333,7 @@
 
         <!-- Generel Booking Knap i bunden -->
         <section class="contact-section">
-            <a href="mailto:Leen.alzein12@gmail.com?subject=Spørgsmål om nabolagsservice 🍋🌼" class="btn-booking">
+            <a href="mailto:Leen.alzein12@gmail.com?subject=Sp%C3%B8rgsm%C3%A5l%20fra%20hjemmesiden%20%F0%9F%8D%8B%F0%9F%8C%BC" class="btn-booking">
                 Send en generel besked her 🍋💛
             </a>
         </section>
@@ -340,7 +342,7 @@
     <!-- DETALJE BOKS (MODAL POP-UP) HTML -->
     <div class="modal-overlay" id="popupBoks">
         <div class="modal-box">
-            <button class="modal-close" onclick="lukDetaljer()">&times;</button>
+            <button class="modal-close" onclick="lukDetaljer()" aria-label="Luk">&times;</button>
             
             <h2 class="modal-title" id="modalTitel">Overskrift</h2>
             <div class="modal-details" id="modalTekst">Detaljeret tekst her...</div>
@@ -367,7 +369,7 @@
             
             // Tilpasser emnefeltet i emailen ud fra den valgte boks
             const emne = encodeURIComponent('Forespørgsel: ' + titel);
-            modalMailKnap.href = `mailto:Leen.alzein12@gmail.com =${emne}`;
+            modalMailKnap.href = `mailto:Leen.alzein12@gmail.com?subject=${emne}`;
             
             popup.classList.add('active');
         }
@@ -381,6 +383,18 @@
             if (e.target === popup) {
                 lukDetaljer();
             }
+        });
+
+        // Gør kortene klikbare med tastaturet (Tab + Enter/Mellemrum)
+        document.querySelectorAll('.card').forEach(function(kort) {
+            kort.setAttribute('role', 'button');
+            kort.setAttribute('tabindex', '0');
+            kort.addEventListener('keydown', function(e) {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    kort.click();
+                }
+            });
         });
 
         // Luk ved tryk på Esc-tasten
