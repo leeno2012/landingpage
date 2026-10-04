@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lektiehjælp &amp; Kreativ Hjælp i Aarhus 🍋</title>
+    
+    <!-- Cute & Round font for det helt rigtige venlige udtryk -->
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* Sød, varm og gul "Lemonade" æstetik */
+        * { 
+            box-sizing: border-box; 
+            margin: 0; 
+            padding: 0; 
+            font-family: 'Fredoka', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+        }
+        
+        body { 
+            background-color: #fffdf0; /* Meget blød, pastel-lys gul */
+            color: #4a3b1b; /* Hyggelig og letlæselig mørkebrun i stedet for hård sort */
+            line-height: 1.6; 
+            padding: 20px;
+        }
+        
+        .container { 
+            max-width: 850px; 
+            margin: 0 auto; 
+            position: relative;
+        }
+        
+        /* Citron-pynt i toppen */
+        .header-decor {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 850px;
+            margin: 0 auto -10px auto;
+            padding: 0 10px;
+        }
+        
+        header { 
+            text-align: center; 
+            padding: 45px 20px; 
+            background: #fef6c7; /* Varm pastel citron-gul */
+            color: #855800; /* Dyb varm gyldenbrun */
+            border-radius: 24px; 
+            margin-bottom: 25px;
+            border: 3px dashed #facc15; /* Solgul stiplet kant */
+            position: relative;
+            box-shadow: 0 4px 15px rgba(250, 204, 21, 0.1);
+        }
+        
+        header h1 { 
+            font-size: 2.3rem; 
+            margin-bottom: 10px; 
+            font-weight: 700; 
+            color: #a16207;
+        }
+        
+        header p { 
+            font-style: italic; 
+            font-size: 1.15rem; 
+            color: #854d0e; 
+            font-weight: 400;
+        }
+        
+        /* "Om Mig" Sektion */
+        .about { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 24px; 
+            margin-bottom: 30px; 
+            box-shadow: 0 6px 15px rgba(250, 204, 21, 0.1); 
+            border: 2.5px solid #fef08a;
+            border-left: 8px solid #facc15; /* Markant gul sidekant */
+            position: relative;
+        }
+        
+        .about h2 { 
+            color: #a16207; 
+            margin-bottom: 12px; 
+            font-size: 1.6rem; 
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Services Grid Layout */
+        .services-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); 
+            gap: 20px; 
+            margin-bottom: 35px; 
+        }
+        
+        .card { 
+            background: white; 
+            padding: 25px; 
+            border-radius: 24px; 
+            box-shadow: 0 5px 12px rgba(250, 204, 21, 0.08); 
+            text-align: center; 
+            border: 2px dashed #fef08a; /* Blød gul kant */
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), border-color 0.3s ease, box-shadow 0.3s ease;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: space-between;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* Citron-bounche på hover */
+        .card:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #facc15;
+            box-shadow: 0 8px 20px rgba(234, 179, 8, 0.18);
+        }
+        
+        .card h3 { 
+            margin-bottom: 12px; 
+            color: #a16207; 
+            font-size: 1.4rem; 
+            font-weight: 600;
+        }
+        
+        .card p { 
+            flex-grow: 1; 
+            font-size: 1rem; 
+            color: #635032; 
+        }
+        
+        .click-for-more {
+            font-size: 0.85rem;
+            color: #ca8a04;
+            margin-top: 12px;
+            font-style: italic;
+            text-decoration: underline;
+            font-weight: 500;
+        }
+
+        .price { 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            color: #854d0e; 
+            margin-top: 15px; 
+            background: #fffbeb; /* Fin varm-hvid underbygning */
+            padding: 6px 14px;
+            border-radius: 50px;
+            display: inline-block;
+            border: 1.5px solid #fef08a;
+        }
+        
+        /* Booking & Kontakt */
+        .contact-section { 
+            text-align: center; 
+            margin-top: 40px; 
+            padding: 20px; 
+        }
+        
+        .btn-booking { 
+            display: inline-block; 
+            background-color: #eab308; /* Frisk mørkegul */
+            color: #451a03; /* Hyggelig mørk kontrastskrift */
+            text-decoration: none; 
+            padding: 16px 40px; 
+            font-size: 1.25rem; 
+            font-weight: 700; 
+            border-radius: 50px; 
+            box-shadow: 0 6px 15px rgba(234, 179, 8, 0.3); 
+            transition: background 0.2s, transform 0.2s, box-shadow 0.2s; 
+            border: 2px solid #ca8a04;
+        }
+        
+        .btn-booking:hover { 
+            background-color: #facc15; /* Lysere solgul */
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(234, 179, 8, 0.45);
+        }
+
+        /* -----------------------------------------
+           DETALJE BOKS (MODAL POP-UP) STYLING 
+        ----------------------------------------- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(66, 50, 18, 0.5); /* Mørkebrun gennemsigtig baggrund */
+            backdrop-filter: blur(5px); 
+            display: none; 
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-box {
+            background: #fffdf5;
+            padding: 40px 30px;
+            border-radius: 32px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(133, 88, 0, 0.18);
+            border: 4px solid #fef08a;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 2.2rem;
+            background: none;
+            border: none;
+            color: #855800;
+            cursor: pointer;
+            line-height: 1;
+            transition: transform 0.2s ease;
+        }
+
+        .modal-close:hover {
+            color: #ca8a04;
+            transform: scale(1.1);
+        }
+
+        .modal-title {
+            color: #854d0e;
+            font-size: 1.9rem;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .modal-details {
+            color: #4a3b1b;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            text-align: left;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            white-space: pre-line;
+            border: 2px dashed #fef08a;
+            box-shadow: inset 0 2px 6px rgba(0,0,0,0.01);
+        }
+
+        .modal-price {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: #a16207;
+            margin-bottom: 25px;
+            background: #fef9c3;
+            padding: 6px 16px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        /* Små dekorative citron-ikoner vha CSS */
+        .lemon-badge {
+            font-size: 1.5rem;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Dekoration i toppen -->
+    <div class="header-decor">
+        <span>🌿🍋</span>
+        <span>🍋🌿</span>
+    </div>
+
+    <div class="container">
+        <header>
+            <h1>Lektiehjælp &amp; Kreativ Hjælp 🍋✨</h1>
+            <p>Sød og pålidelig hjælp tilpasset unge i Aarhus 🌼</p>
+        </header>
+
+        <!-- About Section -->
+        <section class="about">
+            <h2>Om Mig 🍋🌱</h2>
+            <p>Hej med dig! Mit navn er Leen, jeg er 14 år og bor i Sabro. Har du brug for en hjælpende hånd til lektierne, eller mangler du en til at planlægge den næste store begivenhed? Jeg er klar! Jeg elsker at være kreativ og hjælpe til. Tag et kig på mine services nedenfor for at læse mere.
+</p>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services-grid">
+            
+            <div class="card" onclick="visDetaljer('Matematikhjælp 🧠🍋', 'Jeg tilbyder online hjælp til matematik for dig, der går i 4. til 8. klasse.\n\n• Vi kan gennemgå dine lektier sammen\n• Øve tabeller og brøker\n• Gøre dig klar til en lille test eller prøve.\n\nDet foregår helt i dit eget tempo, og vi tager det stille og roligt, så det bliver nemt at forstå og måske endda helt hyggeligt!', '80 kr. / time')">
+                <h3>Matematikhjælp 🧠🍋</h3>
+                <p>Online hjælp til matematik for aldersgruppen 10-14 år.</p>
+                <p class="price">80 kr. / time</p>
+                <p class="click-for-more">Klik for detaljer ✨💛</p>
+            </div>
+
+            <div class="card" onclick="visDetaljer('Arabiskhjælp 🗺️🍋', 'Vil du lære et helt nyt sprog eller øve det, du allerede kan?\n\nJeg tilbyder online begynderhjælp, hvor vi fokuserer på:\n• Det arabiske alfabet\n• Udtale af ord\n• Helt simple og hyggelige hverdags-samtaler.', '80 kr. / time')">
+                <h3>Arabiskhjælp 🗺️🍋</h3>
+                <p>Online begynderhjælp med fokus på alfabetet og simpel samtale.</p>
+                <p class="price">80 kr. / time</p>
+                <p class="click-for-more">Klik for detaljer ✨💛</p>
+            </div>
+
+            <div class="card" onclick="visDetaljer('Festplanlægning 🎉🍋', 'Skal du holde fødselsdag eller klassefest? Jeg elsker kreativt arbejde og hjælper dig med at planlægge den perfekte dag!\n\nJeg kan hjælpe med:\n• At designe super flotte invitationer digitalt\n• Lave en tjekliste over pynt og temaer\n• Planlægge sjove lege og aktiviteter.', 'Aftales nærmere')">
+                <h3>Festplanlægning 🎉🍋</h3>
+                <p>Planlægning af fødselsdagsfest med flotte invitationer og pynt.</p>
+                <p class="price">Aftales</p>
+                <p class="click-for-more">Klik for detaljer ✨💛</p>
+            </div>
+
+            <div class="card" onclick="visDetaljer('Hjemmeside-hjælp 💻🍋', 'Drømmer du om din helt egen blog, gaming-side eller noget helt tredje?\n\nJeg hjælper dig med at forstå, hvordan man bygger og designer din allerførste hjemmeside helt fra bunden. Vi kigger på opsætning og design, så den bliver lige så fin som denne her!', 'Aftales nærmere')">
+                <h3>Hjemmeside-hjælp 💻🍋</h3>
+                <p>Jeg hjælper dig med at bygge og designe din allerførste hjemmeside.</p>
+                <p class="price">Aftales</p>
+                <p class="click-for-more">Klik for detaljer ✨💛</p>
+            </div>
+
+            <div class="card" onclick="visDetaljer('Matematiknoter 📝🍋', 'Få fingrene i mine personlige og super overskuelige matematiknoter det fra 1 til 8 kontext.\n\nNoterne er:\n• Skrevet så de er mega nemme at forstå\n• Fyldt med flotte farver og klare eksempler\n• Proppet med gode huskeregler, som gør afleveringer meget lettere!', '65 kr. pr. sæt')">
+                <h3>Matematiknoter 📝🍋</h3>
+                <p>Salg af overskuelige, velskrevne og hjælpsomme matematiknoter.</p>
+                <p class="price">65 kr. pr. sæt</p>
+                <p class="click-for-more">Klik for detaljer ✨💛</p>
+            </div>
+
+        </section>
+
+        <!-- Generel Booking Knap i bunden -->
+        <section class="contact-section">
+            <a href="mailto:Leen.alzein12@gmail.com?subject=Spørgsmål om nabolagsservice 🍋🌼" class="btn-booking">
+                Send en generel besked her 🍋💛
+            </a>
+        </section>
+    </div>
+
+    <!-- DETALJE BOKS (MODAL POP-UP) HTML -->
+    <div class="modal-overlay" id="popupBoks">
+        <div class="modal-box">
+            <button class="modal-close" onclick="lukDetaljer()">&times;</button>
+            
+            <h2 class="modal-title" id="modalTitel">Overskrift</h2>
+            <div class="modal-details" id="modalTekst">Detaljeret tekst her...</div>
+            <div class="modal-price" id="modalPris">Pris</div>
+            
+            <a href="#" id="modalMailKnap" class="btn-booking" style="font-size: 1.1rem; padding: 12px 32px;">
+                Book denne service 💌🍋
+            </a>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT TIL MODAL STYRING -->
+    <script>
+        const popup = document.getElementById('popupBoks');
+        const modalTitel = document.getElementById('modalTitel');
+        const modalTekst = document.getElementById('modalTekst');
+        const modalPris = document.getElementById('modalPris');
+        const modalMailKnap = document.getElementById('modalMailKnap');
+
+        function visDetaljer(titel, beskrivelse, pris) {
+            modalTitel.textContent = titel;
+            modalTekst.textContent = beskrivelse;
+            modalPris.textContent = pris;
+            
+            // Tilpasser emnefeltet i emailen ud fra den valgte boks
+            const emne = encodeURIComponent('Forespørgsel: ' + titel);
+            modalMailKnap.href = `mailto:Leen.alzein12@gmail.com =${emne}`;
+            
+            popup.classList.add('active');
+        }
+
+        function lukDetaljer() {
+            popup.classList.remove('active');
+        }
+
+        // Luk ved klik udenfor boksen
+        popup.addEventListener('click', function(e) {
+            if (e.target === popup) {
+                lukDetaljer();
+            }
+        });
+
+        // Luk ved tryk på Esc-tasten
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && popup.classList.contains('active')) {
+                lukDetaljer();
+            }
+        });
+    </script>
+</body>
+</html>
